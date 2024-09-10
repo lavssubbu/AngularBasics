@@ -1,0 +1,29 @@
+<h1>MY First Component</h1>
+<!--Property Binding []-->
+<h1 [innerText]="text"></h1>
+<!--Event Binding ()-->
+<button (click)="counter()">ClickMe</button>
+<p>Counter Value: {{count}}</p>
+<!--Combined property and event binding-->
+<button [disabled]="butval" (click)="display()" class="btn btn-primary">Click</button>
+<p>{{fname}} {{lname}}</p>
+<input type="text" (input)="show($event)">
+<p [ngClass] = "['red','size50']">you entered {{text}}</p>
+<!--TwoWay Binding- Combination of property and event binding-->
+<input type="text" name="value" [(ngModel)]="value">
+<p>you entered {{value}}</p>
+
+<!--Styling - classBinding,StyleBinding-->
+<p [className]="'red size50'">Class Binding</p>
+<p [ngClass] = "['red','size50']">Using ngClass</p>
+
+<!--Inlinestyle binding-->
+<p [style.background-color]="'yellow'">Style Biniding</p>
+
+<!--ngStyle - to use inline styling-->
+<div [ngStyle]="{ 'color': 'violet', 'font-size': '30px' }">
+    <p >This is a paragraph with ngStyle</p>
+  </div>
+
+
+
