@@ -14,9 +14,11 @@
             <td>{{products.proid}}</td>
             <td>{{products.proname}}</td>
             <td>{{products.proprice}}</td>
+            <td>{{products.stock}}</td>
            
             <td> <img [src]="products.proimg" width="200px" alt="{{products.proname}}"/></td>
-            <td><button (click)="addtoCart(products)" class="btn btn-info">Add to Cart</button></td>
+            <td><button (click)="addtoCart(products)" [disabled]="products.stock <= 0" 
+                [ngStyle]="{'background-color': products.stock !== undefined && products.stock <= 0 ? 'grey' : 'blue'}" class="btn btn-info">Add to Cart</button></td>
         </tr>
     </tbody>
 </table>

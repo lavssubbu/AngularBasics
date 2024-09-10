@@ -10,15 +10,20 @@ import { Component } from '@angular/core';
 })
 export class ProductlistComponent {
     lstproduct:Product[]=[
-      {proid:111,proname:"Laptop",proprice:75000,proimg:"/assets/laptop.jpg"},
-      {proid:112,proname:"Mac",proprice:97000,proimg:"/assets/mac.jpg"},
-      {proid:113,proname:"iphone",proprice:85000,proimg:"/assets/iphone.jpg"}
+      {proid:111,proname:"Laptop",proprice:75000,proimg:"/assets/laptop.jpg",stock:10},
+      {proid:112,proname:"Mac",proprice:97000,proimg:"/assets/mac.jpg",stock:5},
+      {proid:113,proname:"iphone",proprice:85000,proimg:"/assets/iphone.jpg",stock:2}
     ]
     cartprod:Product[]= [];
     addtoCart(prod:Product)
     {
-      this.cartprod.push(prod);
-      console.log('Product added to cart:', prod);
+      if (prod && prod.stock > 0) {
+        this.cartprod.push(prod);  
+        prod.stock--;  
+        console.log('Product added to cart:', prod);
+      } else {
+        console.error('Out of stock or no product selected.');
+      }
     }
     product = { rating: 4.5 };
 
@@ -31,4 +36,5 @@ class Product{
   proname?:string
   proprice?:number
   proimg?:string  
+  stock: number=0;
 }
