@@ -1,0 +1,6 @@
+<p>todolist works!</p>
+
+<app-taskinput (taskAdded)="addTask($event)"></app-taskinput>
+<ul>
+  <li *ngFor="let task of tasks">{{ task }}</li>
+</ul>
