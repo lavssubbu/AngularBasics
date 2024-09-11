@@ -1,0 +1,128 @@
+<div class='card'>
+    <div class='card-header'>
+      ngSwitch Example
+    </div>
+    <div class="card-body">
+      Input string : <input type='text' [(ngModel)]="num" />
+   
+      <div [ngSwitch]="num">
+        <div *ngSwitchCase="'1'">One</div>
+        <div *ngSwitchCase="'2'">Two</div>
+        <div *ngSwitchCase="'3'">Three</div>
+        <div *ngSwitchCase="'4'">Four</div>
+        <div *ngSwitchCase="'5'">Five</div>
+        <div *ngSwitchDefault>This is Default</div>
+      </div>
+    </div>
+  </div> 
+
+<!-- Toggle Login and Admin Buttons -->
+<button (click)="toggleLogin()">
+    {{ isLoggedIn ? 'Logout' : 'Login' }}
+  </button>
+  
+  <button *ngIf="isLoggedIn" (click)="toggleAdminStatus()">
+    {{ isAdmin ? 'Switch to User' : 'Switch to Admin' }}
+  </button>
+  
+  <!-- User Interface: Shows Dashboard and Notification -->
+  <ng-container *ngIf="isLoggedIn; then loggedInBlock; else loginBlock"></ng-container>
+  
+  <ng-template #loggedInBlock>
+    <div *ngIf="isAdmin; then adminBlock; else userBlock"></div>
+  </ng-template>
+  
+  <ng-template #adminBlock>
+    <h3>Admin Dashboard</h3>
+    <p>Welcome, Admin!</p>
+  </ng-template>
+  
+  <ng-template #userBlock>
+    <h3>User Dashboard</h3>
+    <p>Welcome, User!</p>
+  </ng-template>
+  
+  <ng-template #loginBlock>
+    <h3>Please log in to access your dashboard.</h3>
+  </ng-template>
+  
+  <!-- Notification Section with Dynamic Notification Type--> 
+  <div [ngSwitch]="notificationType" class="alert" [ngClass]="{
+      'alert-success': notificationType === 'success',
+      'alert-warning': notificationType === 'warning',
+      'alert-danger': notificationType === 'error',
+      'alert-info': notificationType === 'info'
+    }">
+    <div *ngSwitchCase="'success'">
+      Success! You're logged in as an Admin.
+    </div>
+    <div *ngSwitchCase="'warning'">
+      Warning! You're logged in as a regular User.
+    </div>
+    <div *ngSwitchCase="'error'">
+      Error! Something went wrong.
+    </div>
+    <div *ngSwitchCase="'info'">
+      Info! Please log in to continue.
+    </div>
+    <div *ngSwitchDefault>
+      No notifications at this time.
+    </div>
+  </div>
+
+
+
+
+<!--<p>angdir works!</p>
+<button (click)="toggleLogin()">
+    {{ isLoggedIn ? 'Logout' : 'Login' }}
+  </button>
+ 
+  Using ngIf to conditionally display content 
+  <div *ngIf="!isLoggedIn">
+    <h3>Please log in to continue</h3>
+   
+  </div>
+  
+  <div *ngIf="isLoggedIn">
+    <h3>Welcome back, User!</h3>
+  </div>
+
+
+<ng-container *ngIf="isLoggedIn; then loggedInBlock; else loginBlock"></ng-container>
+
+<ng-template #loggedInBlock>
+  <div *ngIf="isAdmin; then adminBlock; else userBlock"></div>
+</ng-template>
+
+<ng-template #adminBlock>
+  <h3>Admin Dashboard</h3>
+  <p>Welcome, Admin!</p>
+</ng-template>
+
+<ng-template #userBlock>
+  <h3>User Dashboard</h3>
+  <p>Welcome, User!</p>
+</ng-template>
+
+<ng-template #loginBlock>
+  <h3>Please log in to access your dashboard.</h3>
+</ng-template>
+
+
+<div [ngSwitch]="notificationType">
+    <div *ngSwitchCase="'success'" class="alert alert-success">
+      Success! Your operation was completed.
+    </div>
+    <div *ngSwitchCase="'warning'" class="alert alert-warning">
+      Warning! There might be some issues.
+    </div>
+    <div *ngSwitchCase="'error'" class="alert alert-danger">
+      Error! Something went wrong.
+    </div>
+    <div *ngSwitchDefault>
+      No notifications at this time.
+    </div>
+  </div>
+-->
+  

@@ -1,0 +1,8 @@
+<p>theme works!</p>
+
+
+<app-themechange (ThemeChange)="changeTheme($event)"></app-themechange>
+
+<div [ngClass]="currentTheme" class="theme-box">
+    <p>The current theme is: {{ currentTheme }}</p>
+  </div>
